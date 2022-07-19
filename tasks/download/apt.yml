@@ -9,6 +9,6 @@
   rescue:
     - name: Get clickhouse distrib
       ansible.builtin.get_url:
-        url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
+        url: "https://packages.clickhouse.com/deb/pool/stable/clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
         dest: "./clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
       check_mode: false
