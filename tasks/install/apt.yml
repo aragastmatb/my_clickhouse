@@ -3,7 +3,7 @@
   become: true
   ansible.builtin.apt:
     deb:
-      - clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
-      - clickhouse-client_{{ clickhouse_version }}_all.deb"
-      - clickhouse-server_{{ clickhouse_version }}_all.deb"
+      - "{{ ansible_user_dir }}/clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
+      - "{{ansible_user_dir }}/clickhouse-client_{{ clickhouse_version }}_all.deb"
+      - "{{ ansible_user_dir }}/clickhouse-server_{{ clickhouse_version }}_all.deb"
   notify: Start clickhouse service

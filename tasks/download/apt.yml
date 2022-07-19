@@ -3,12 +3,12 @@
   - name: "Get {{ clickhouse_packages | flatten(1) }} distrib"
     ansible.builtin.get_url:
       url: "https://packages.clickhouse.com/deb/pool/stable/{{ item }}_{{ clickhouse_version }}_all.deb"
-      dest: "./{{ item }}_{{ clickhouse_version }}_all.deb"
+      dest: "{{ ansible_user_dir }}/{{ item }}_{{ clickhouse_version }}_all.deb"
     with_items: "{{ clickhouse_packages }}"
     check_mode: false
   rescue:
     - name: Get clickhouse distrib
       ansible.builtin.get_url:
         url: "https://packages.clickhouse.com/deb/pool/stable/clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
-        dest: "./clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
+        dest: "{{ ansible_user_dir }}/clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
       check_mode: false
