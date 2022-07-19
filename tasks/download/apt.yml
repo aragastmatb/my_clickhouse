@@ -1,0 +1,7 @@
+---
+- name: "Get {{ clickhouse_packages | flatten(1) }} distrib"
+  ansible.builtin.get_url:
+    url: "https://packages.clickhouse.com/deb/pool/stable/{{ item }}_{{ clickhouse_version }}_amd64.deb"
+    dest: "./{{ item }}_{{ clickhouse_version }}_amd64.deb"
+  with_items: "{{ clickhouse_packages }}"
+  check_mode: false

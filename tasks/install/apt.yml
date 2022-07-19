@@ -1,0 +1,9 @@
+---
+- name: Install clickhouse packages
+  become: true
+  ansible.builtin.apt:
+    deb:
+      - clickhouse-common-static_{{ clickhouse_version }}_amd64.deb"
+      - clickhouse-client_{{ clickhouse_version }}_amd64.deb"
+      - clickhouse-server_{{ clickhouse_version }}_amd64.deb"
+  notify: Start clickhouse service
